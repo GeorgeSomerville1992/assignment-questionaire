@@ -184,15 +184,20 @@
 function displayresults(response){
   var questions = response.responseJSON['Questions']
    console.log(questions)
-  var main = response.responseJSON['Questions']
-  var mainarray = main.splice(0,1)
-  console.log(mainarray)
-  for (i=0; i < mainarray.length; i++){
+ 
+ 
+    
+  // chop up object in looop, show each one
+  var questionsarray = questions.splice(0,1)
+  console.log(questionsarray)
+  for (i=0; i < questionsarray.length; i++){
+    var questionsarray = questions.splice(i,i+1)
     // console.log(main[i].Q)
     // console.log(currentobject)
-    console.log(mainarray)
-    var contentString = $('<div id="content">' + '<h3>' + main[i].Q + '</h3>');
+    console.log(questionsarray)
+    var contentString = $('<div id="content">' + '<h3>' + questionsarray[i].Q + '</h3>');
     contentString.appendTo(".displayquestions")
+
   }
 }
 
@@ -244,9 +249,7 @@ $(function(){
 
         });
         function showajax(response){
-           
             raw_data = response.responseText
-              
             var format = JSON.parse(raw_data);
             displayresults(response)
         }
