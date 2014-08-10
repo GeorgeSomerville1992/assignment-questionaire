@@ -173,10 +173,11 @@ function displayresults(data){
   // console.log(main)
   var main = data['Questions']
   var mainarray = main.splice(0,1)
+  console.log(mainarray)
   for (i=0; i < mainarray.length; i++){
     // console.log(main[i].Q)
     // console.log(currentobject)
-    console.log(mainarray)
+    // console.log(mainarray)
     var contentString = $('<div id="content">' + '<h3>' + main[i].Q + '</h3>');
     contentString.appendTo(".displayquestions")
   }
