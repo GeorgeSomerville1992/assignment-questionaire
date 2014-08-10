@@ -1,12 +1,11 @@
-%container
-  %img
-  %h1 this is my question page 
+.container
+  %img{src: "/assets/question.jpeg"}
+  .questionscontainer
+    %h1 questionaire
 
-  %h4 image goes here 
-
-  .ajax 
-    %p ajacx stuff goes here
-    %button.togglequestions Next Question
-  %p.displayquestions
-  %p.displayanswers
+    .ajax 
+      %p Click to see a Question
+      %button.togglequestions Next Question
+    %p.displayquestions
+    %p.displayanswers
 

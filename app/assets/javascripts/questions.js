@@ -24,6 +24,7 @@ function displayresults(response, increment){
     console.log(increment)
     $('.togglequestions').click(function(){
       $('.displayquestions').empty();  
+      $('.displayanswers').empty();
       var colours = ['yellow','red','green','blue', 'brown', 'blue','white']  
       var questions = response.responseJSON['Questions']
        console.log(questions)
@@ -32,37 +33,22 @@ function displayresults(response, increment){
       var question = questions.splice(0,1)
       console.log(question)
       for (i=0; i < question.length; i++){
-
-        var contentString = $('<div id="content">' + '<h3>' + questions[i].Q + '</h3>' + '<button class="toggleawsners">' + "show answers" + '</button>' );
+        var contentString = $('<div id="content">' + '<h3>' + questions[i].Q + '</h3>' + '<button class="toggleanswers">' + "show answers" + '</button>' );
         contentString.appendTo(".displayquestions")
-
-        $('.toggleawsners').click(function(){
+        $('.toggleanswers').click(function(){
             $('.displayanswers').empty();
-            var awnsers = response.responseJSON['Questions']
-            console.log(awnsers)
-            var answerArray = awnsers.splice(0,1)
+            var answers= response.responseJSON['Questions']
+            
+            var answerArray = answers.splice(0,1)
 
             $.each(answerArray,function(i, awnser){
-                console.log(awnser)
+                
                 var contentAnswers = $('<div id="contentAnswers">' + '<p>' + answerArray[i]['Answers'] + '</p>'  );
                 contentAnswers.appendTo(".displayanswers")
             })
         })
       }
     });
-}
-
-function displayawnsers(response){
-    
-    // .each
-      //   for (i=0; i < awnsers.length; i++){
-  //   // console.log(main[i].Q)
-  //   // console.log(currentobject)
-  //   // splice on show
-  //   var contentString = $('<div id="content">' + '<h3>' + awnsers[i].Q + '</h3>' + '<button class="toggleawsners">' + "show results" + '</button>' );
-  //   contentString.appendTo(".displayawnsers")
-
-  // }    
 }
 
 $(function(){
