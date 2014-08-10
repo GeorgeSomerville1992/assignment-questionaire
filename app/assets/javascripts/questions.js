@@ -167,7 +167,9 @@ var data = {
 
 
 function displayresults(data){
+
   var questions = data['Questions']
+   console.log(questions)
   // console.log(main)
   var main = data['Questions']
   var mainarray = main.splice(0,1)
