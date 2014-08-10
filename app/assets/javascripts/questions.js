@@ -191,9 +191,24 @@ function displayresults(response){
     // console.log(currentobject)
     console.log(mainarray)
     var contentString = $('<div id="content">' + '<h3>' + main[i].Q + '</h3>');
-    contentString.appendTo(".displayajax")
+    contentString.appendTo(".displayquestions")
   }
 }
+
+
+// function displayresults(data){
+//   var questions = data['Questions']
+//   // console.log(main)
+//   var main = data['Questions']
+//   var mainarray = main.splice(0,1)
+//   for (i=0; i < mainarray.length; i++){
+//     // console.log(main[i].Q)
+//     // console.log(currentobject)
+//     console.log(mainarray)
+//     var contentString = $('<div id="content">' + '<h3>' + main[i].Q + '</h3>');
+//     contentString.appendTo(".displayquestions")
+//   }
+// }
 
 
 
@@ -211,7 +226,7 @@ $(function(){
     //     };
     //     request.send(null);
     // }
-  $('.performajax').click(function(){
+  $('.togglequestions').click(function(){
         
          $.ajax({
             url: "/assets/jsonquestions.json",
