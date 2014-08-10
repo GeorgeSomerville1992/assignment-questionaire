@@ -181,28 +181,92 @@
 //     contentString.appendTo(".displayquestions")
 //   }
 // }
+function getresults(){
+    $.ajax({
+            url: "/assets/jsonquestions.json",
+
+            //force to handle it as text
+            dataType: "json",
+            complete: showajax
+
+        });
+        function showajax(response){
+            
+            raw_data = response.responseText
+            var format = JSON.parse(raw_data);
+            displayresults(response)
+        }
+}
+function getawnsers(){
+    $.ajax({
+            url: "/assets/jsonquestions.json",
+
+            //force to handle it as text
+            dataType: "json",
+            complete: showajax
+
+        });
+        function showajax(response){
+            
+            raw_data = response.responseText
+            var format = JSON.parse(raw_data);
+            displayawnsers(response)
+        }
+
+}
+
+
 function displayresults(response){
-    
+  var colours = ['yellow','red','green','blue', 'brown', 'blue','white']  
   var questions = response.responseJSON['Questions']
    console.log(questions)
- 
- 
-    
   // chop up object in looop, show each one
   //var questionsarray = questions.splice(0,1)
-  
-  for (i=0; i < questions.length; i++){
-    
+  var question = questions.splice(0,1)
+  console.log(question)
+
+  for (i=0; i < question.length; i++){
     // console.log(main[i].Q)
     // console.log(currentobject)
     // splice on show
-    var contentString = $('<div id="content">' + '<h3>' + questions.splice(0,1) + '</h3>');
-    
+    var contentString = $('<div id="content">' + '<h3>' + questions[i].Q + '</h3>' + '<button class="toggleawsners">' + "show results" + '</button>' );
     contentString.appendTo(".displayquestions")
 
+    $('.toggleawsners').click(function(){
+        console.log("hi")
+        getawnsers()
+
+    })
+
   }
+
+
+
 }
 
+function displayawnsers(response){
+    var awnsers = response.responseJSON['Questions']
+    
+    // iterate through each one
+    console.log(awnsers)
+    // .each
+    $.each(awnsers,function(i, awnser){
+        var awnserarray = awnser['Answers']
+        console.log(awnserarray)
+        var contentAnswers = $('<div id="contentAnswers">' + '<p>' + awnserarray[i] + '</p>'  );
+        contentAnswers.appendTo(".displayanswers")
+    })
+  //   for (i=0; i < awnsers.length; i++){
+  //   // console.log(main[i].Q)
+  //   // console.log(currentobject)
+  //   // splice on show
+  //   var contentString = $('<div id="content">' + '<h3>' + awnsers[i].Q + '</h3>' + '<button class="toggleawsners">' + "show results" + '</button>' );
+  //   contentString.appendTo(".displayawnsers")
+
+  // }
+
+    
+}
 
 
 
@@ -242,27 +306,10 @@ $(function(){
     // }
     
   $('.togglequestions').click(function(){
-        
-        
-         $.ajax({
-            url: "/assets/jsonquestions.json",
-
-            //force to handle it as text
-            dataType: "json",
-            complete: showajax
-
-        });
-        function showajax(response){
-            
-            raw_data = response.responseText
-            var format = JSON.parse(raw_data);
-            displayresults(response)
-        }
-      
-        
+        getresults()
 
     });
-
+  
 
 
   // $('.togglequestions').click(function(){
