@@ -186,6 +186,7 @@ function displayresults(response){
    console.log(questions)
   var main = response.responseJSON['Questions']
   var mainarray = main.splice(0,1)
+  console.log(mainarray)
   for (i=0; i < mainarray.length; i++){
     // console.log(main[i].Q)
     // console.log(currentobject)
