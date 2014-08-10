@@ -1,8 +1,6 @@
 
 
-function getresults(){
 
-}
 function getawnsers(){
     $.ajax({
             url: "/assets/jsonquestions.json",
@@ -25,6 +23,7 @@ function displayresults(response, increment){
     console.log(response)
     console.log(increment)
     $('.togglequestions').click(function(){
+      $('.displayquestions').empty();  
       var colours = ['yellow','red','green','blue', 'brown', 'blue','white']  
       var questions = response.responseJSON['Questions']
        console.log(questions)
@@ -33,11 +32,12 @@ function displayresults(response, increment){
       var question = questions.splice(0,1)
       console.log(question)
       for (i=0; i < question.length; i++){
-        var contentString = $('<div id="content">' + '<h3>' + questions[i].Q + '</h3>' + '<button class="toggleawsners">' + "show results" + '</button>' );
+
+        var contentString = $('<div id="content">' + '<h3>' + questions[i].Q + '</h3>' + '<button class="toggleawsners">' + "show answers" + '</button>' );
         contentString.appendTo(".displayquestions")
 
         $('.toggleawsners').click(function(){
-            
+            $('.displayanswers').empty();
             var awnsers = response.responseJSON['Questions']
             console.log(awnsers)
             var answerArray = awnsers.splice(0,1)
@@ -81,7 +81,6 @@ $(function(){
             var increment = 0
             displayresults(response, increment)
         }
-
 })
  // $('.togglequestions').click(function(){
 
