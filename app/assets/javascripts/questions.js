@@ -182,20 +182,22 @@
 //   }
 // }
 function displayresults(response){
+    
   var questions = response.responseJSON['Questions']
    console.log(questions)
  
  
     
   // chop up object in looop, show each one
-  var questionsarray = questions.splice(0,1)
-  console.log(questionsarray)
-  for (i=0; i < questionsarray.length; i++){
-    var questionsarray = questions.splice(i,i+1)
+  //var questionsarray = questions.splice(0,1)
+  
+  for (i=0; i < questions.length; i++){
+    
     // console.log(main[i].Q)
     // console.log(currentobject)
-    console.log(questionsarray)
-    var contentString = $('<div id="content">' + '<h3>' + questionsarray[i].Q + '</h3>');
+    // splice on show
+    var contentString = $('<div id="content">' + '<h3>' + questions.splice(0,1) + '</h3>');
+    
     contentString.appendTo(".displayquestions")
 
   }
@@ -238,7 +240,9 @@ $(function(){
     //     };
     //     request.send(null);
     // }
+    
   $('.togglequestions').click(function(){
+        
         
          $.ajax({
             url: "/assets/jsonquestions.json",
@@ -249,10 +253,14 @@ $(function(){
 
         });
         function showajax(response){
+            
             raw_data = response.responseText
             var format = JSON.parse(raw_data);
             displayresults(response)
         }
+      
+        
+
     });
 
 
