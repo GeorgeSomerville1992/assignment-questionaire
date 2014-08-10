@@ -191,7 +191,7 @@ function displayresults(response){
     // console.log(currentobject)
     console.log(mainarray)
     var contentString = $('<div id="content">' + '<h3>' + main[i].Q + '</h3>');
-    contentString.appendTo(".displayquestions")
+    contentString.appendTo(".displayajax")
   }
 }
 
