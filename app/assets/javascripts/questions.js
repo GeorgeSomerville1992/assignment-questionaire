@@ -166,21 +166,35 @@
 // }
 
 
-function displayresults(response){
+// function displayresults(response){
     
-  var questions = response.responseJSON['Questions']
-  console.log(questions)
-  // console.log(main)
+//   var questions = response.responseJSON['Questions']
+//   console.log(questions)
+//   // console.log(main)
   
-  var questionsarray = questions.splice(0,1)
-  for (i= 0; i < questionsarray.length; i++){
-    // console.log(questions[i].Q)
+//   var questionsarray = questions.splice(0,1)
+//   for (i= 0; i < questionsarray.length; i++){
+//     // console.log(questions[i].Q)
+//     // console.log(currentobject)
+//     console.log(questionsarray)
+//     var contentString = $('<div id="content">' + '<h3>' + questions[i].Q + '</h3>');
+//     contentString.appendTo(".displayquestions")
+//   }
+// }
+function displayresults(response){
+  var questions = response.responseJSON['Questions']
+  // console.log(main)
+  var main = response.responseJSON['Questions']
+  var mainarray = main.splice(0,1)
+  for (i=0; i < mainarray.length; i++){
+    // console.log(main[i].Q)
     // console.log(currentobject)
-    console.log(questionsarray)
-    var contentString = $('<div id="content">' + '<h3>' + questions[i].Q + '</h3>');
+    console.log(mainarray)
+    var contentString = $('<div id="content">' + '<h3>' + main[i].Q + '</h3>');
     contentString.appendTo(".displayquestions")
   }
 }
+
 
 
 
