@@ -183,7 +183,7 @@
 // }
 function displayresults(response){
   var questions = response.responseJSON['Questions']
-  // console.log(main)
+   console.log(questions)
   var main = response.responseJSON['Questions']
   var mainarray = main.splice(0,1)
   for (i=0; i < mainarray.length; i++){
@@ -194,6 +194,12 @@ function displayresults(response){
     contentString.appendTo(".displayquestions")
   }
 }
+
+
+
+
+
+
 
 
 // function displayresults(data){
