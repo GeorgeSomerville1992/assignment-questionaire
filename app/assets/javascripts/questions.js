@@ -166,6 +166,7 @@ var data = {
 }
 
 
+
 function displayresults(data){
   var questions = data['Questions']
   // console.log(main)
@@ -181,7 +182,40 @@ function displayresults(data){
 }
 
 
+
 $(function(){
+    // url = "/assets/jsonquestions.json"
+    // alert(url)
+    // function simpleHttpRequest(url, success, failure){
+    //     var request = requestObject();
+    //     request.open("GET", url, true);
+    //     request.onreadystatechange = function(){
+
+    //         var data = eval("(" + request.responseText + ")");
+    //         alert(data)
+    //     };
+    //     request.send(null);
+    // }
+  $('.performajax').click(function(){
+        
+         $.ajax({
+            url: "/assets/jsonquestions.json",
+
+            //force to handle it as text
+            dataType: "json",
+            complete: showajax
+
+        });
+        function showajax(response){
+           
+            raw_data = response.responseText
+              
+            var format = JSON.parse(raw_data);
+           
+        }
+    });
+
+
 
   $('.togglequestions').click(function(){
 
@@ -189,6 +223,8 @@ $(function(){
 
     displayresults(data)
 
+
+    
 
    // when i make a najax request it somehow amkes a request to another page which has the data in a json formate 
    // rails auotmatiacally has its in json formate

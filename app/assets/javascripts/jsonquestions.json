@@ -43,7 +43,7 @@
                 "Windows"
             ]
         },
-        
+        {
             "Q": "What is the challenge to building a mobile product?",
             "Answers": [
                 "Speed to Market",
@@ -85,7 +85,7 @@
         },
         {
             "Q": "What tech area will have the most influence in 10 years?",
-            "Answers": 
+            "Answers": [
                 "Medical",
                 "Media",
                 "Financial"
